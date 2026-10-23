@@ -114,10 +114,19 @@ def home():
     return "YouTube Downloader Bot is running!"
 
 def run_bot():
-    bot.infinity_polling()
+    bot.infinity_polling(
+        skip_pending=True,
+        timeout=30,
+        long_polling_timeout=30
+    )
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    threading.Thread(target=run_bot, daemon=True).start()
+
+    threading.Thread(
+        target=run_bot,
+        daemon=True
+    ).start()
+
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
