@@ -102,10 +102,10 @@ def messages(message):
             f"📩 رسالة من مستخدم\nالآيدي: {message.from_user.id}\n"
             f"الرسالة: {message.text or '[رسالة غير نصية]'}")
 
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    import threading
 from flask import Flask
+import threading
+import os
+import logging
 
 app = Flask(__name__)
 
